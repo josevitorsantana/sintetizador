@@ -1,16 +1,20 @@
-h1 {
+h1, h2{
     text-align: center;
 }
 
-p {
+p{
     text-align: center;
 }
 
-div {
+#principal{
     margin: auto;
-    width: 50%;
+    width: 60%;
 }
 
-div > img{
+#osciladores{
+    width: 90%;
+}
+
+img{
     width: 100%;
 }
