@@ -1,18 +1,25 @@
+body{
+    background-color: darkcyan;
+}
+
 h1, h2{
+    margin-top: 10px;
     text-align: center;
 }
 
 p{
-    text-align: center;
 }
 
 #principal{
+    border-radius: 10px;
+    background-color: white;
     margin: auto;
     width: 60%;
 }
 
 #osciladores{
-    width: 90%;
+    margin: auto;
+    width: 95%;
 }
 
 img{
