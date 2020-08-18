@@ -1,5 +1,6 @@
 body{
     background-color: darkcyan;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 h1, h2{
@@ -15,13 +16,28 @@ p{
     background-color: white;
     margin: auto;
     width: 60%;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
-
-#osciladores{
+#conteudo{
     margin: auto;
     width: 95%;
+    padding: 10px;
 }
 
 img{
     width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.diagrama{width: 85%;}
+
+footer{
+    color: seashell;
+    text-align: center;
+}
+
+a{text-decoration: none;}
+#referencia{color: wheat;}
+#link{text-align: center;}
