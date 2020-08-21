@@ -8,9 +8,6 @@ h1, h2{
     text-align: center;
 }
 
-p{
-}
-
 #principal{
     border-radius: 10px;
     background-color: white;
@@ -21,7 +18,7 @@ p{
 #conteudo{
     margin: auto;
     width: 95%;
-    padding: 10px;
+    padding: 5px;
 }
 
 img{
@@ -40,4 +37,14 @@ footer{
 
 a{text-decoration: none;}
 #referencia{color: wheat;}
-#link{text-align: center;}
+#link{
+    display: flex;
+    justify-content: center;
+    margin-bottom: -15px;
+}
+
+#link > p{
+    margin-left: 10px;
+    padding: 5px;
+}
+.numpagina > a{color: darkcyan;}
