@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construindo um Sintetizador</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <div id="principal">
+        <div id="conteudo">
+            <h1>Formas de onda básicas</h1>
+            <p>
+                Existem 4 diferentes tipos de de formas de onda básicas, como ilustrados aqui.
+            </p>
+            <h2>Senoidal</h2>
+            <p>
+                Ondas senoidais são parecidas com com uma onda em um recipiente com água, movendo para cima
+                e para baixo sem nenhum início ou final abrupto. Sons similares com uma onda senoidal incluem
+                assobios, ar se movendo através  da abertura de uma garrafa vazia, e toque de um diapasão.
+            </p>
+            
+            <img src="IMG/onda02.png" alt="">
+            <img src="IMG/onda03.png" alt="">
+            <img src="IMG/onda04.png" alt="">
+            
+            <p>
+                Ondas senoidais também podem ser adicionadas entre si para gerarem ondas diferentes,
+                como visto nas imagens acima. Caso ondas senoidais de mesma frequência e amplitude inversa
+                sejam adicionadas, o resultado será nulo.
+            </p>
+            
+            <h2>Dente-de-Serra</h2>
+            <img src="IMG/onda05.png" alt="">
+            <p>
+                Ondas de dente-de-serra possuem um som forte e claro de zumbido. Uma onda Dente-de-Serra
+                pode ser feita adicionando séries de ondas senoidais com diferentes frequências e volumes.
+                A frequência da primeira e mais barulhenta onda senoidal é o que escutamos como a frequência
+                da Dente-de-Serra resultante. Isso é chamado de frequência fundamental. Cada uma das outras
+                ficam progressivamente mais quietas, ondas senoidais que fazem uma Dente-de-Serra são múltiplos
+                integrais da frequência fundamental. Essas frequências são chamadas harmônicas.
+            </p>
+            <p>
+                Por exemplo, uma onda dente-de-serra ideal com uma frequência fundamental de 100Hz teria harmônicas
+                em 200Hz, 300Hz, 400Hz e por ai em diante, com cada harmônica mais quieta que a última. Devido ao fato
+                que a onda Dente-de-Serra possui cada integral harmônica da frequência fundamental, ela possui um som
+                rico aos nossos ouvidos. A frequência fundamental define o tom do som, enquanto as harmônicas mudam
+                o timbre do som sem afetar o tom.
+            </p>
+            <img src="IMG/grafico01.png" alt="">
+            <h2>Quadrangular</h2>
+            <img src="IMG/onda06.png" alt="">
+            <p>
+                Assim como as ondas dente-de-serra, ondas quadrangulares podem ser geradas usando ondas senoidais
+                com um volume decrescente. Entretanto, a onda quadrangular só possui harmônicas impares.
+                Ondas quadrangulares podem ser encontradas no áudio de jogos antigos da Nintendo, que eram feitos quase
+                que inteiramente de ondas quadrangulares.
+            </p>
+            <img src="IMG/grafico02.png" alt="">
+            <h2>Triangular</h2>
+            <img src="IMG/onda07.png" alt="">
+            <p>
+                Ondas triangulares tem um som parecido com algo entre uma onda senoidal e uma onda quadrangular.
+                E assim como as ondas quadrangulares, elas possuem apenas as harmônicas ímpares. Elas se diferem
+                das ondas quadrangulares pois o volume de cada harmônica adicionada diminui mais rapidamente.
+            </p>
+            <img src="IMG/grafico03.png" alt="">
+            <div id="link">
+                <p class="numpagina"><a href="index.html">1</a></p>
+                <p>2</p>
+                <p class="numpagina"><a href="construindo.html">3</a></p> 
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Este site é uma tradução adaptada de <b><a id="referencia" href="http://beausievers.com/synth/synthbasics/">Beau Sievers</a></b></p>
+    </footer>
+</body>
+</html>
