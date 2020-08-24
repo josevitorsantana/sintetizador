@@ -3,14 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construindo um Sintetizador</title>
+    <title>Tutorial Modulator</title>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="shortcut icon" href="IMG/icon.ico" type="image/x-icon">
 </head>
 <body>
     <div id="principal">
         <div id="conteudo">
+            <h1>Modulator</h1>
+            <p>
+                  O modulator será o software utilizado para exemplos, aqui faremos uma introdução ao
+                modulator para melhor entendimento do leitor. O modulator se encontra separado com 6 módulos
+                diferentes, que serão discutidos a seguir.
+            </p>
             
+            <h2>Audio Node Graph</h2>
+                <img src="IMG/audionodegraph.png" alt="">
+                <p>
+                    O Audio Node Graph é o módulo onde ocorre a construção do modulador, podendo ser colocados
+                    e ligados diferentes blocos para diferentes efeitos no som, a ligação dos blocos é feita com
+                    o botão SHIFT ao clicar em um bloco e em outro em seguida, e para desfazer a ligação, apenas
+                    repita o processo com blocos já ligados.
+                </p>
+            
+            <h2>Pallete</h2>
+                <img src="IMG/pallete.png" alt="">
+            <p>
+                O módulo Pallete é o módulo onde se encontram os blocos a serem colocados no Audio Node Graph,
+                basta clicar em um bloco e ele será adicionado ao Audio Node Graph, cada bloco possui propriedades
+                diferentes e serão trabalhados mais a frente.
+            </p>
+            <h2>Node Parameters</h2>
+                <img src="IMG/nodeparameters.png" alt="">
+            <p>
+                O módulo Node Parameters serve para modificar o funcionamento de um bloco selecionado  no Audio Node Graph,
+                mudando seus parâmetros.
+            </p>
+            <h2>Presets</h2>
+            <img src="IMG/presets.png" alt="">
+            <p>
+                O módulo Presets serve para salvar e reutilizar modificações feitas pelo usuário,
+                ele também possui opções padrão já salvas como exemplos.
+            <h2>Piano Keyboard</h2>
+            <img src="pianokeyboard.png" alt="">
+            <p>
+                É o teclado do sintetizador, utilizado para tocar as notas com as modificações estabelecidas,
+                também é possível mudar as oitavas, o portamento e o arpejo do instrumento nesse módulo.
+            </p>
+            <h2>Graph</h2>
+            <img src="IMG/graph.png" alt="">
+            <p>
+                O módulo Graph é um módulo exclusivo para visualização de onda, podendo ver a forma de onda uma vez
+                que tocar em uma nota no teclado.
+            </p>
+                    
             <div id="link">
                 <p class="numpagina"><a href="index.html">1</a></p>
                 <p class="numpagina"><a href="formasdeondas.html">2</a></p>
