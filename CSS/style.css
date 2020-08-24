@@ -34,6 +34,11 @@ footer{
     color: seashell;
     text-align: center;
 }
+#presets{width: 27%;}
+#graph{width: 30%;}
+#palette{width: 10%;}
+.modulator{width: 70%;}
+
 
 a{text-decoration: none;}
 #referencia{color: wheat;}
