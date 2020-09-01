@@ -49,6 +49,8 @@ a{text-decoration: none;}
     margin-bottom: -15px;
 }
 
+#filtroimagem {display: flex;}
+
 #link > p{
     margin-left: 10px;
     padding: 5px;
