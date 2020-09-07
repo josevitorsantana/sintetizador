@@ -43,15 +43,16 @@ footer{
 
 a{text-decoration: none;}
 #referencia{color: wheat;}
-#link{
+.link{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-bottom: -15px;
 }
 
 #filtroimagem {display: flex;}
 
-#link > p{
+.link > p{
     margin-left: 10px;
     padding: 5px;
 }
