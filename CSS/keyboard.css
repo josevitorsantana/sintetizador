@@ -1,0 +1,24 @@
+#settings{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#principal{
+    margin-top: 30px;
+}
+
+#conteudo{
+    padding: 10px;
+}
+
+.keyboard{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.tecla{
+    margin-left: 5px;
+}

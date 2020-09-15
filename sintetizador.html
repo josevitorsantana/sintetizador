@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="titulo">Sintetizador</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/keyboard.css">
+    <link rel="shortcut icon" href="IMG/icon.ico" type="image/x-icon">
+</head>
+<body onload="numPages()">
+    <div id="principal">
+        <div id="conteudo">
+            <h1>Sintetizador</h1>
+            <div class="keyboard">
+
+            </div>
+            <div id="settings">
+                <input type="range" id="volume" min="0.0" max="1.0" step="0.01" value="0.5">
+                <select name="waveform">
+                    <option value="sine">Senoidal</option>
+                    <option value="square" selected>Quadrada</option>
+                    <option value="sawtooth">Dente de Serra</option>
+                    <option value="triangle">Triangular</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Este site é uma tradução adaptada de <b><a id="referencia" href="http://beausievers.com/synth/synthbasics/">Beau Sievers</a></b></p>
+    </footer>
+</body>
+<script src="js/script.js"></script>
+<script src="js/keyboard.js"></script>
+</html>

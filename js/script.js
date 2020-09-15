@@ -1,7 +1,7 @@
 function numPages(){
     const nomePaginas = [
         {
-            titulo: "Sintetizador",
+            titulo: "Ondas de som",
             link: "index.html"
         },
         {
@@ -11,16 +11,18 @@ function numPages(){
         {
             titulo: "Construindo um Sintetizador",
             link: "construindo.html"
-        }
-        ,
+        },
         {
             titulo: "Tutorial Modulator",
             link: "modulator.html"
-        }
-        ,
+        },
         {
             titulo: "Filtros",
             link: "filtros.html"
+        },
+        {
+            titulo: "Sintetizador",
+            link: "sintetizador.html"
         }
     ]
     const titulo = document.getElementById("titulo").innerHTML
