@@ -1,16 +1,36 @@
 #settings{
-    margin-top: 10px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 10px;
     display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid gainsboro;
+}
+
+#settings > div{
+    margin-top: 20px;
+}
+
+#settings > h4{
+    margin-top: -0px;
+    margin-bottom: 0px;
 }
 
 #principal{
     margin-top: 30px;
+    width: 70%;
 }
 
 #conteudo{
     padding: 10px;
+}
+
+#geral{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .keyboard{
@@ -20,5 +40,32 @@
 }
 
 .tecla{
-    margin-left: 5px;
+    height: 120px;
+    width: 40px;    
+    
+}
+
+.newtecla{
+    height: 80px;
+    width: 20px;
+    background-color: black;
+    color: white;
+    position: relative;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+@media (max-width: 900px){
+    #principal{width: 100%;}
+    .tecla{
+        height: 80px;
+        width: 25px;
+    }
+    .newtecla{
+        height: 50px;
+        width: 10px;
+    }
+    #settings{
+        margin-top: 10px;
+    }
 }

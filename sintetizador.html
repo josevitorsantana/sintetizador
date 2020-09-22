@@ -9,21 +9,38 @@
     <link rel="shortcut icon" href="IMG/icon.ico" type="image/x-icon">
 </head>
 <body onload="numPages()">
+    <div id="fucker"></div>
     <div id="principal">
         <div id="conteudo">
             <h1>Sintetizador</h1>
-            <div class="keyboard">
+            <div id="geral">
+                <div class="keyboard">
 
+                </div>
+                <div id="settings">
+                    <h4>Configurações</h4>
+                    <div>
+                        Volume <br>
+                        <input type="range" id="volume" min="0.0" max="1.0" step="0.01" value="0.5">
+                    </div>
+                    <div>
+                        Forma de Onda <br>
+                        <select name="waveform">
+                            <option value="sine">Senoidal</option>
+                            <option value="square" selected>Quadrada</option>
+                            <option value="sawtooth">Dente de Serra</option>
+                            <option value="triangle">Triangular</option>
+                        </select>
+                        <img src="" alt="">
+                    </div>
+                    <div>
+                        Frequencia <br>
+                        <input type="range" id="freq" min="0" max="6" step="2" value="2">
+                    </div>
+                    
+                </div>
             </div>
-            <div id="settings">
-                <input type="range" id="volume" min="0.0" max="1.0" step="0.01" value="0.5">
-                <select name="waveform">
-                    <option value="sine">Senoidal</option>
-                    <option value="square" selected>Quadrada</option>
-                    <option value="sawtooth">Dente de Serra</option>
-                    <option value="triangle">Triangular</option>
-                </select>
-            </div>
+            
         </div>
     </div>
     <footer>
@@ -31,5 +48,6 @@
     </footer>
 </body>
 <script src="js/script.js"></script>
+<script src="js/notas.js"></script>
 <script src="js/keyboard.js"></script>
 </html>
