@@ -80,7 +80,7 @@ function createKey(nota, freq, part){
 }
 
 function noteReleased(event){
-    oscList.stop()
+    oscList.stop();
 }
 
 function changeVolume(){
