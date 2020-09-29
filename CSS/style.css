@@ -3,6 +3,11 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+header{
+    font-family: sans-serif;
+    color: white;
+}
+
 h1, h2{
     margin-top: 10px;
     text-align: center;
@@ -26,6 +31,10 @@ img{
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#logo{
+    width: 28%;
 }
 
 .diagrama{width: 85%;}
@@ -60,5 +69,7 @@ a{text-decoration: none;}
 
 
 @media (max-width: 900px){
-    #principal{width: 100%;}
+    #principal{
+        width: 100%;}
+    #logo{width: 70%;}
 }
