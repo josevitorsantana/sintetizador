@@ -1,11 +1,13 @@
 let audioContext = new (window.AudioContext || window.webkitAudioContext)();
 let masterGainNode = null;
 let oscList = null
+
 let volume = document.querySelector("#volume")
 let oitava = document.querySelector("#freq")
 let freq0 = parseInt(oitava.value)
 let freq1 = freq0 + 1
 let wavePicker = document.querySelector("select[name='waveform']");
+
 const notas = createNoteTable()
 
 setup()
@@ -55,7 +57,7 @@ function createKey(nota, freq, part){
     if(nota.length === 1) 
         tecla.classList.add("tecla")
     else
-        tecla.classList.add("newtecla")
+        tecla.classList.add("teclapreta")
 
     //eventos de mouse pressionado
 
@@ -73,14 +75,22 @@ function createKey(nota, freq, part){
     tecla.addEventListener("mouseleave", noteReleased)
 
     // eventos de toque mobile
-    tecla.addEventListener("touchstart",function(event){
-        oscList = playTone(freq[(oitava.value)])
-    })
+    if(!part){
+        tecla.addEventListener("touchstart",function(event){
+            oscList = playTone(freq[freq0])
+        })
+    }
+    else{
+        tecla.addEventListener("touchstart",function(event){
+            oscList = playTone(freq[freq1])
+        })
+    }
     tecla.addEventListener("touchend",noteReleased)
 }
 
 function noteReleased(event){
     oscList.stop();
+    oscList = null;
 }
 
 function changeVolume(){

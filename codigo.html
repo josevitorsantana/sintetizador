@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="titulo">Codigo</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="shortcut icon" href="IMG/icon.ico" type="image/x-icon">
+</head>
+<body onload="numPages()">
+    <header>
+        <a href="index.html">Sintetizador</a>
+        <a id="sobre" href="sobre.html">Sobre</a>
+    </header>
+    <div id="principal">
+        <div id="conteudo">
+            <h1>Teclado Virtual</h1>
+            <p>Esse exemplo utiliza das seguintes interfaces de Web API: <font color="red">AudioContext, 
+                OscillatorNode, PeriodicWave, e GainNode.</font> </p>
+            <p>Existem três componentes primários para o display do nosso teclado 
+                virtual. O primeito do qual é o teclado musical em si. Nós extraímos 
+                em um par de elementos <font color="iceblue">&lt;div></font> aninhados para permitir a rolagem 
+                horizontal caso as teclas não encaixem na tela.
+            </p>
+            <h3>O Teclado</h3>
+            <p>Primeiro, criamos o espaço no qual construiremos o teclado. Estaremos 
+                construindo o teclado programaticamente, considerando que ao fazer 
+                desse jeito teremos a flexibilidade de configurar cada tecla conforme 
+                determinamos as informações apropriadas para tecla correspondente. 
+                No nosso caso, pegamos a frequência de cada tecla através de uma 
+                tabela, mas poderia ser calculado de forma algorítmica também.
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li> <font color="grey"> &lt;<font color="purple">div</font> 
+                        <font color="green">class</font>="<font color="iceblue">keyboard</font>"
+                         &gt; </font>
+                    </li>
+                    <li></li>
+                    <li>
+                        <font color="grey">
+                        &lt;/<font color="purple">div</font>&gt;
+                        </font>
+                    </li>
+                </ol>
+            </div>
+            <p>As teclas serão inseridas no bloco de classe <font color="red">"keyboard"</font>.</p>
+
+            <h3>A barra de opções</h3>
+            <p>Abaixo do teclado, colocaremos alguns controles para configurar. Por 
+                enquanto, teremos três controles: Um para controlar o volume, um para 
+                mudar a frequência e outro para selecionar a forma de onda periódica 
+                usada ao gerar as notas.
+            </p>
+
+            <h4>O controle de volume</h4>
+            <p>Primeiro criamos o <font color="iceblue">&lt;div></font> para conter a barra de opções, para ser 
+                personalizado conforme preciso. Então estabelecemos uma caixa que 
+                será apresentada no lado esquerdo da barra e colocar um rótulo e um 
+                elemento <font color="iceblue">&lt;input></font> do tipo <font color="red">"range"</font>. O elemento range será tipicamente 
+                apresentado como o controle da barra de rolagem ; configuramos ele 
+                para permitir qualquer valor entre 0.0 e 1.0 em cada posição.
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li>
+                        &lt;<font color="purple">div</font>
+                        <font color="green">id</font>="
+                        <font color="iceblue">settings</font>" &gt;</li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;<font color="purple">h4</font>>
+                        <font color="black">Configurações</font>
+                        &lt;/<font color="purple">h4</font>>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;<font color="purple">div</font>>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">Volume</font>
+                        &lt;<font color="purple">br</font>>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;<font color="purple">input</font>>
+                        <font color="green">type</font>="<font color="iceblue">range</font>"
+                        <font color="green">id</font>="<font color="iceblue">volume</font>"
+                        <font color="green">min</font>="<font color="iceblue">0.0</font>"
+                        <font color="green">max</font>="<font color="iceblue">1.0</font>"
+                        <font color="green">step</font>="<font color="iceblue">0.01</font>"
+                        <font color="green">value</font>="<font color="iceblue">0.5</font>">
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;/<font color="purple">div</font>>
+                    </li>
+                </ol>
+            </div>
+            <p>
+                Especificamos um valor padrão de 0.5, e provemos um id <font color="red">”volume”</font>
+                no qual é usado para leitura no código javascript.
+            </p>
+            
+            <h4>A seleção de forma de onda</h4>
+            <p>
+                E embaixo da barra de configurações, colocamos um rótulo e um elemento 
+                <font color="iceblue">&lt;select></font> nomeado de <font color="red">"waveform"</font> cujas opções correspondem às formas 
+                de onda disponíveis.
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li>&lt;<font color="purple">div</font>></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">Forma de onda</font> &lt;<font color="purple">br</font>>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;<font color="purple">select</font>
+                        <font color="green">name</font>="<font color="iceblue">waveform</font>">
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;<font color="purple">option</font>
+                        <font color="green">value</font>="<font color="iceblue">sine</font>">
+                        <font color="black">Senoidal</font>
+                        &lt;/<font color="purple">option</font>>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;<font color="purple">option</font>
+                        <font color="green">value</font>="<font color="iceblue">square</font>"
+                        <font color="green">selected</font>>
+                        <font color="black">Quadrada</font>
+                        &lt;/<font color="purple">option</font>>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;<font color="purple">option</font>
+                        <font color="green">value</font>="<font color="iceblue">sawtooth</font>">
+                        <font color="black">Dente de Serra</font>
+                        &lt;/<font color="purple">option</font>>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;<font color="purple">option</font>
+                        <font color="green">value</font>="<font color="iceblue">triangle</font>">
+                        <font color="black">Triangular</font>
+                        &lt;/<font color="purple">option</font>>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;/<font color="purple">select</font>>
+                    </li>
+                    <li>&lt;/<font color="purple">div</font>></li>
+                </ol>
+            </div>
+
+            <h4>A seleção da frequência</h4>
+            <p>
+                Para a parte de frequência foi colocado outra barra de rolagem com 
+                o elemento range, configuramos ele para receber valores de 0 a 6 
+                com passo de 2.
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li>&lt;<font color="purple">div</font>></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">Frequência</font>
+                        &lt;<font color="purple">br</font>>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &lt;<font color="purple">input</font>>
+                        <font color="green">type</font>="<font color="iceblue">range</font>"
+                        <font color="green">id</font>="<font color="iceblue">freq</font>" 
+                        <font color="green">min</font>="<font color="iceblue">0</font>" 
+                        <font color="green">max</font>="<font color="iceblue">6</font>" 
+                        <font color="green">step</font>="<font color="iceblue">2</font>" 
+                        <font color="green">value</font>="<font color="iceblue">2</font>">
+                    </li>
+                    <li>&lt;/<font color="purple">div</font>></li>
+                </ol>
+            </div>
+
+            <h3>Javascript</h3>
+            <p>O código em JavaScript começa inicializando algumas variáveis.</p>
+            <div class="codigo">
+                <ol>
+                    <li>
+                        <font color="black">
+                            <font color="iceblue">let</font>
+                            audioContext =
+                            <font color="iceblue">new</font>
+                            (window.AudioContext || window.webkitAudioContext)();
+                        </font>
+                    </li>
+                    <li><font color="black">
+                        <font color="iceblue">let</font>
+                        masterGainNode =
+                        <font color="iceblue">null</font>
+                    </font>
+                        </li>
+                    <li>
+                        <font color="black">
+                            <font color="iceblue">let</font>
+                            oscList =
+                            <font color="iceblue">null</font>
+                        </font>  
+                    </li>
+                </ol>
+            </div>
+            <ol>
+                <li>
+                    <strong>audioContext</strong> é colocado para referenciar o objeto global 
+                    <font color="iceblue">AudioContext</font> (ou <strong>webkitAudioContext</strong> se  necessário).
+                </li>
+                <li>
+                    <strong>oscList</strong> está colocado para conter uma lista de todos os 
+                    osciladores atualmente tocando. Ele começa nulo, afinal não 
+                    há nenhum oscilador tocando ainda.
+                </li>
+                <li>
+                    <strong>masterGainNode</strong> é colocado como nulo; durante o processo de setup, 
+                    ele será configurado para contar um <font color="iceblue">GainNode</font> no qual todos os 
+                    osciladores irão se conectar para permitir o volume geral a 
+                    ser controlado por apenas uma barra de rolagem.
+                </li>
+            </ol>
+
+            <div class="codigo">
+                <ol>
+                    <li><font color="black">
+                        <font color="iceblue">let</font>
+                        volume = document.<font color="red">querySelector</font>("<font color="green">#volume</font>")
+                    </font></li>
+                    <li><font color="black">
+                        <font color="iceblue">let</font>
+                        oitava = document.<font color="red">querySelector</font>("<font color="green">#freq</font>")
+                    </font></li>
+                    <li><font color="black">
+                        <font color="iceblue">let</font>
+                        freq0 = <font color="red">parseInt</font>(oitava.value)
+                    </font></li>
+                    <li><font color="black">
+                        <font color="iceblue">let</font>
+                        freq1 = freq0 + <font color="purple">1</font>
+                    </font></li>
+                    <li><font color="black">
+                        <font color="iceblue">let</font>
+                        wavePicker = document.<font color="red">querySelector</font>("<font color="green">select[ name='waveform']</font>")
+                    </font></li>
+                </ol>
+            </div>
+            <ol>
+                <li>
+                    <strong>volume</strong> é o elemento <font color="purple">&lt;input></font> do tipo range usado para controlar
+                    o volume
+                </li>
+                <li>
+                    <strong>oitava</strong> é o elemento <font color="purple">&lt;input></font> do tipo range para controlar 
+                    a frequência.
+                </li>
+                <li>
+                    <strong>freq0</strong> recebe o valor do oitava convertido para uma 
+                    variável do tipo <font color="iceblue">int</font>
+                </li>
+                <li>
+                    <strong>freq1</strong> recebe o <strong>freq0 + 1</strong> pois no teclado é usado 2 
+                    oitavas por frequência selecionada
+                </li>
+                <li>
+                    <strong>wavePicker</strong> é o elemento <font color="purple">&lt;select></font> usado para seleção da 
+                    forma de onda das notas.
+                </li>
+            </ol>
+            <div class="codigo">
+                <ol>
+                    <li><font color="black">
+                        <font color="iceblue">const</font>
+                        notas =
+                        <font color="red">createNoteTable</font>( )
+                    </font></li>
+                </ol>
+            </div>
+            <p>variável global com todas as frequências usadas no sintetizador.</p>
+
+            <h4>Criando a tabela de notas</h4>
+            <p> 
+                função <font color="red">createNoteTable( )</font> constrói um vetor notas para conter um vetor de 
+                objetos representando cada oitava. Cada oitava, possui uma propriedade para 
+                cada nota nessa oitava; O nome dessa propriedade é o nome da nota (utilizando 
+                da notação em inglês, como "C" para representar "dó"), e o valor é a frequência, 
+                em Hertz, daquela nota.
+            </p>
+            <p>
+                obs: as frequências foram retiradas de acordo com
+                <a href="https://pt.wikipedia.org/wiki/Lista_de_frequ%C3%AAncias_das_teclas_de_piano">Lista de frequências das teclas de piano</a>
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li><font color="iceblue">function</font>
+                        <font color="red">createNoteTable</font>( ){</li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">const</font>
+                        <font color="black">notas</font> = [
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        {
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">texto:</font>
+                        <font color="green">"C"</font>,
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">freq:</font>
+                        [<font color="purple">16.35160, 32.70320, 65.40639, 130.8128,</font>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <font color="purple">261.6256, 523.2511, 1046.502, 2093.005</font>]
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        },
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        {
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">texto:</font>
+                        <font color="green">"C#"</font>,
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">freq:</font>
+                        [<font color="purple">17.32391, 34.64783, 69.29566, 138.5913,</font>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <font color="purple">277.1826, 554.3653, 1108.731, 2217.461</font>]
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        },
+                    </li>
+                </ol>
+            </div>
+            <p>Várias oitavas não mostradas por questões de brevidade.<br>
+            Você pode acessá-lo completo <a href="js/notas.js">aqui.</a></p>
+            <p>
+                Cada objeto, que fica dentro do vetor tem uma variável para 
+                identificação da nota e as frequências da nota da oitava 0 
+                até a oitava 7,com esse vetor conseguimos acessar todos os 
+                valores das frequências disponíveis ali
+            </p>
+            <p>
+                exemplo com <strong>notas[1].freq[3]</strong>, acessamos a nota <strong>C#</strong> com o valor de
+                frequência <strong>138.5913</strong> da terceira oitava.
+            </p>
+            
+            <h4>Construindo o teclado</h4>
+            <p>
+                As funções <font color="red">setup( )</font> e <font color="red">createKeyboard( )</font> são responsáveis por construir 
+                o teclado e preparar a aplicação para tocar a música.
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li>
+                        <font color="iceblue">function</font>
+                        <font color="red">setup</font>( ){</li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">masterGainNode</font>
+                        = <font color="black">audioContext.<font color="red">createGain</font></font>( );
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">masterGainNode</font>.<font color="red">connect</font>(<font color="black"> audioContext.destination</font>);
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">masterGainNode.gain.value</font> =
+                        <font color="black">volume.value;</font>
+                    </li>
+                    <li></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">volume</font>.<font color="red">addEventListener</font>(<font color="green">"change"</font>,<font color="black"> changeVolume</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">oitava</font>.<font color="red">addEventListener</font>(<font color="green">"change"</font>,<font color="black"> changeFrequency</font>)
+                    </li>
+                    <li></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="red">createKeyboard</font>( )
+                    </li>
+                    <li>}</li>
+                </ol>
+            </div>
+            
+            <div class="codigo">
+                <ol>
+                    <li>
+                        <font color="iceblue">function</font>
+                        <font color="red">createKeyboard</font>( ){</li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">for</font>
+                        (<font color="iceblue">let</font>
+                        <font color="black">cont</font> =
+                        <font color="purple">0</font>;
+                        <font color="black">cont</font> &lt;
+                        <font color="black">Object</font>.<font color="red">keys</font>(<font color="black">notas</font>).<font color="black">length</font>;
+                        <font color="black">cont++</font>){
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="red">createKey</font>(<font color="black">notas</font>[<font color="black">cont</font>]<font color="black">.texto,
+                        notas</font>[<font color="black">cont</font>]<font color="black">.freq</font>,
+                        <font color="purple">0</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">for</font>
+                        (<font color="iceblue">let</font>
+                        <font color="black">cont</font> =
+                        <font color="purple">0</font>;
+                        <font color="black">cont</font> &lt;
+                        <font color="black">Object</font>.<font color="red">keys</font>(<font color="black">notas</font>).<font color="black">length</font>;
+                        <font color="black">cont++</font>){
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="red">createKey</font>(<font color="black">notas</font>[<font color="black">cont</font>]<font color="black">.texto,
+                            notas</font>[<font color="black">cont</font>]<font color="black">.freq</font>,
+                            <font color="purple">1</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                    </li>
+                    <li>}</li>
+                </ol>
+            </div>
+            <ol>
+                <li>
+                    Um manipulador de eventos é estabelecido ao chamar nosso velho amigo 
+                    <font color="red">addEventListener()</font> para cuidar dos eventos do change no controle de 
+                    ganho geral. Isso vai simplesmente atualizar o módulo de ganho de 
+                    volume para o novo valor.
+                </li>
+                <li>
+                    A função <font color="red">createKeyboard( )</font> chama a função <font color="red">createKey( )</font> que serve 
+                    para criar um botão do sintetizador.
+                </li>
+            </ol>
+            
+            <h4>Criando uma tecla</h4>
+            <p>
+                A função <font color="red">createKey( )</font>  é chamada toda vez que queremos que uma tecla 
+                seja apresentada no nosso teclado virtual. Ela cria elementos da 
+                tecla e seu rótulo, adiciona informação dos atributos ao elemento 
+                para uso posterior, e coloca modificadores de eventos para os 
+                eventos que nos importam.
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li><font color="iceblue">function</font>
+                        <font color="red">createKey</font>(<font color="black">nota, freq, part</font>){</li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">let</font>
+                        <font color="black">keyboard</font> =
+                        <font color="black">document</font>.<font color="red">querySelector</font>(<font color="green">".keyboard"</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">let</font>
+                        <font color="black">tecla</font> =
+                        <font color="black">document</font>.<font color="red">createElement</font>(<font color="green">"input"</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="red">setAttribute</font>(<font color="green">"type"</font>, <font color="green">"button"</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">keyboard</font>.<font color="red">appendChild</font>(<font color="black">tecla</font>)
+                    </li>
+                    <li></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">if</font>
+                        (<font color="black">nota.length</font> ===
+                        <font color="purple">1</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="black">classList</font>.<font color="red">add</font>(<font color="green">"tecla"</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">else</font>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="black">classList</font>.<font color="red">add</font>(<font color="green">"teclapreta"</font>)
+                    </li>
+                    <li></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">if</font>
+                        (<font color="black">!part</font>){
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="red">addEventListener</font>(<font color="green">"mousedown"</font>,<font color="iceblue">function </font>(<font color="black">event</font>){
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">oscList</font> =
+                        <font color="red">playTone</font>(<font color="black">freq</font>[<font color="black">freq0</font>])
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        })
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">else</font>{
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="red">addEventListener</font>(<font color="green">"mousedown"</font>,<font color="iceblue">function </font>(<font color="black">event</font>){
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">oscList</font> =
+                        <font color="red">playTone</font>(<font color="black">freq</font>[<font color="black">freq1</font>])
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        })
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="red">addEventListener</font>(<font color="green">"mouseup"</font>,<font color="black"> noteReleased</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="red">addEventListener</font>(<font color="green">"mouseleave"</font>,<font color="black"> noteReleased</font>)
+                    </li>
+                    <li></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="darkgreen">// eventos de toque mobile</font>
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">if</font>
+                        (<font color="black">!part</font>){
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="red">addEventListener</font>(<font color="green">"touchstart"</font>,<font color="iceblue">function </font>(<font color="black">event</font>){
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">oscList</font> =
+                        <font color="red">playTone</font>(<font color="black">freq</font>[<font color="black">freq0</font>])
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        })
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">else</font>{
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="red">addEventListener</font>(<font color="green">"touchstart"</font>,<font color="iceblue">function </font>(<font color="black">event</font>){
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">oscList</font> =
+                        <font color="red">playTone</font>(<font color="black">freq</font>[<font color="black">freq1</font>])
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        })
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">tecla</font>.<font color="red">addEventListener</font>(<font color="green">"touchend"</font>,<font color="black"> noteReleased</font>)
+                    </li>
+                    <li>}</li>
+                </ol>
+            </div>
+            <p>
+                A função recebe a nota e a frequência, cria um botão e adiciona 
+                os eventos de toque que faz tocar o sintetizador.
+            </p>
+
+            <h4>Fazendo música</h4>
+            <p>
+                O trabalho da função <font color="red">playTone( )</font> é tocar um tom em uma dada frequência. 
+                Isso será usado pelo modificador para eventos acionados nas teclas do 
+                teclado, para que toquem as notas apropriadas.
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li>
+                        <font color="iceblue">function</font>
+                        <font color="red">playTone</font>(<font color="black">freq</font>){
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">let</font>
+                        <font color="black">osc</font> =
+                        <font color="black">audioContext</font>.<font color="red">createOscillator</font>( )
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">osc</font>.<font color="red">connect</font>(<font color="black">masterGainNode</font>)
+                    </li>
+                    <li></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">let</font>
+                        <font color="black">type</font> =
+                        <font color="black">wavePicker</font>.<font color="black">options</font>[<font color="black">wavePicker</font>.<font color="black">selectedIndex</font> ].<font color="black">value</font>;
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">osc</font>.<font color="black">type</font> =
+                        <font color="black">type</font>;
+                    </li>
+                    <li></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">osc</font>.<font color="black">frequency</font>.<font color="black">value</font> =
+                        <font color="black">freq</font>;
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">osc</font>.<font color="red">start</font>( );
+                    </li>
+                    <li></li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="iceblue">return</font>
+                        <font color="black">osc</font>;
+                    </li>
+                    <li>}</li>
+                </ol>
+            </div>
+            <p>
+                O <font color="red">playTone( )</font> começa criando um novo 
+                <font color="iceblue">OscillatorNode</font> ao chamar o 
+                método <font color="iceblue">AudioContext.createOscillator( )</font>.
+                Então conectamos ele para
+                o módulo de ganha geral ao chamar o novo método de osciladores 
+                <font color="red">OscillatorNode.connect( )</font> method;, Que determina ao oscilador 
+                onde ele irá mandar seu output. Ao fazer isso, mudar o valor 
+                do ganho do módulo de ganho geral irá mudar o volume de todos 
+                os tons gerados.
+            </p>
+            <p>
+                A variável type lê o que o usuário colocou na caixa de formas 
+                de ondas e define para oscilador o tipo de onda.
+            </p>
+
+            <h4>Parando um tom</h4>
+            <p>
+                A função <font color="red">noteReleased( )</font> é o modificador 
+                de eventos chamado quando o usuário solta o botão do mouse ou 
+                move o mouse para fora da tecla que ele está tocando.
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li>
+                        <font color="iceblue">function</font>
+                        <font color="red">noteReleased</font>(<font color="black">event</font>){
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">oscList</font>.<font color="red">stop</font>( );
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">oscList</font> =
+                        <font color="iceblue">null</font>;
+                    </li>
+                    <li>}</li>
+                </ol>
+            </div>
+            <p>
+                <font color="red">noteReleased( )</font> chama o método de 
+                oscilador <font color="red">stop( )</font> para parar de 
+                tocar a nota. Finalmente, a entrada oscList para nota é limpa.
+            </p>
+            
+            <h4>Mudando o volume geral</h4>
+            <p>
+                A barra de rolagem do volume na barra de opções dá uma simples 
+                interface para mudar o valor do ganho no módulo de ganho geral, 
+                então mudando o volume de todas as notas sendo tocadas. O metódo 
+                <font color="red">changeVolume( )</font> é o modificador do 
+                evento change na barra de rolagem.
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li>
+                        <font color="iceblue">function</font>
+                        <font color="red">changeVolume</font>(<font color="black">event</font>) {
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">masterGainNode.gain.value</font> =
+                        <font color="black">volume.value</font>
+                    </li>
+                    <li>}</li>
+                </ol>
+            </div>
+            <p>Isso simplesmente coloca o valor do módulo de ganho geral <strong>gain</strong>
+            <font color="iceblue">AudioParam</font> para o novo valor na barra de rolagem.</p>
+            
+            <h4>Mudando Frequência</h4>
+            <p>
+                A função <font color="red">changeFrequency( )</font> atualiza as 
+                oitavas toda vez que a barra de rolagem da frequência for modificada
+            </p>
+            <div class="codigo">
+                <ol>
+                    <li>
+                        <font color="iceblue">function</font>
+                        <font color="red">changeFrequency</font>( ) {
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">freq0</font> =
+                        <font color="red">parseInt</font>(<font color="black">oitava.value</font>)
+                    </li>
+                    <li>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="black">freq0</font> =
+                        <font color="black">freq1</font> +
+                        <font color="purple">1</font>
+                    </li>
+                    <li>}</li>
+                </ol>
+            </div>
+            <h4>Resultado</h4>
+            <p>Coloque tudo junto, o resultado é um simples e funcional teclado virtual 
+            que funciona com o clique, ele pode ser visto na próxima página.</p>
+        </div>
+    </div>
+</body>
+<script src="js/script.js"></script>
+</html>

@@ -21,6 +21,10 @@ function numPages(){
             link: "filtros.html"
         },
         {
+            titulo: "Codigo",
+            link: "codigo.html"
+        },
+        {
             titulo: "Sintetizador",
             link: "sintetizador.html"
         }

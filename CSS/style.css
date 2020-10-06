@@ -1,16 +1,33 @@
 body{
+    margin: 0;
     background-color: darkcyan;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+h1, h2, h3{
+    margin-top: 10px;
+    text-align: center;
+}
 header{
-    font-family: sans-serif;
+    width: 100%;
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    font-size: 135%;
+}
+
+header > a{
     color: white;
 }
 
-h1, h2{
-    margin-top: 10px;
-    text-align: center;
+header > a:hover{
+    color: wheat;
+}
+#sobre{
+    font-size: 80%;
 }
 
 #principal{
@@ -33,16 +50,7 @@ img{
     margin-right: auto;
 }
 
-#logo{
-    width: 28%;
-}
-
 .diagrama{width: 85%;}
-
-footer{
-    color: seashell;
-    text-align: center;
-}
 #presets{width: 27%;}
 #graph{width: 30%;}
 #palette{width: 10%;}
@@ -51,7 +59,6 @@ footer{
 
 
 a{text-decoration: none;}
-#referencia{color: wheat;}
 .link{
     display: flex;
     flex-wrap: wrap;
@@ -68,8 +75,16 @@ a{text-decoration: none;}
 .numpagina > a{color: darkcyan;}
 
 
+.codigo{
+    margin-top: 5px;
+    background-color:#eeeeee;
+    font-size: 95%;
+    color: darkgrey;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+}
+
 @media (max-width: 900px){
     #principal{
         width: 100%;}
-    #logo{width: 70%;}
 }
