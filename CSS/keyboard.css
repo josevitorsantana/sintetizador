@@ -55,7 +55,7 @@
 }
 
 @media (max-width: 900px){
-    #principal{width: 100%;}
+    #principal{width: 98%;}
     .tecla{
         height: 80px;
         width: 25px;

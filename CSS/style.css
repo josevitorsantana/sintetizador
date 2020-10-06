@@ -86,5 +86,6 @@ a{text-decoration: none;}
 
 @media (max-width: 900px){
     #principal{
-        width: 100%;}
+        width: 98%;}
+    header{width: 90%;}
 }
