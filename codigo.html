@@ -10,24 +10,28 @@
 <body onload="numPages()">
     <header>
         <a href="index.html">Sintetizador</a>
-        <a id="sobre" href="sobre.html">Sobre</a>
+        <a id="sobre" href="sobre.html">Sobre/About</a>
     </header>
     <div id="principal">
         <div id="conteudo">
             <h1>Teclado Virtual</h1>
-            <p>Esse exemplo utiliza das seguintes interfaces de Web API: <font color="red">AudioContext, 
+            <p>Até aqui, vimos como usar o Modulator para aprender sobre sintetizadores.
+                Agora, para quem gosta de programação, iremos mostrar como criar seu próprio
+                sintetizador básico usando JavaScript.
+            </p>
+            <p>Esse exemplo utiliza as seguintes interfaces de Web API: <font color="red">AudioContext, 
                 OscillatorNode, PeriodicWave, e GainNode.</font> </p>
             <p>Existem três componentes primários para o display do nosso teclado 
-                virtual. O primeito do qual é o teclado musical em si. Nós extraímos 
+                virtual. O primeiro é o teclado musical em si. Nós extraímos 
                 em um par de elementos <font color="iceblue">&lt;div></font> aninhados para permitir a rolagem 
                 horizontal caso as teclas não encaixem na tela.
             </p>
             <h3>O Teclado</h3>
             <p>Primeiro, criamos o espaço no qual construiremos o teclado. Estaremos 
-                construindo o teclado programaticamente, considerando que ao fazer 
+                construindo o teclado usando programação, considerando que ao fazer 
                 desse jeito teremos a flexibilidade de configurar cada tecla conforme 
-                determinamos as informações apropriadas para tecla correspondente. 
-                No nosso caso, pegamos a frequência de cada tecla através de uma 
+                determinamos no código. 
+                No nosso caso, configuramos a frequência de cada tecla através de uma 
                 tabela, mas poderia ser calculado de forma algorítmica também.
             </p>
             <div class="codigo">
@@ -47,8 +51,8 @@
             <p>As teclas serão inseridas no bloco de classe <font color="red">"keyboard"</font>.</p>
 
             <h3>A barra de opções</h3>
-            <p>Abaixo do teclado, colocaremos alguns controles para configurar. Por 
-                enquanto, teremos três controles: Um para controlar o volume, um para 
+            <p>Abaixo do teclado, colocaremos alguns controles para configurar. Nesse exemplo básico,
+                teremos três controles: um para controlar o volume, um para 
                 mudar a frequência e outro para selecionar a forma de onda periódica 
                 usada ao gerar as notas.
             </p>
@@ -56,9 +60,9 @@
             <h4>O controle de volume</h4>
             <p>Primeiro criamos o <font color="iceblue">&lt;div></font> para conter a barra de opções, para ser 
                 personalizado conforme preciso. Então estabelecemos uma caixa que 
-                será apresentada no lado esquerdo da barra e colocar um rótulo e um 
+                será apresentada no lado esquerdo da barra e colocamos um rótulo e um 
                 elemento <font color="iceblue">&lt;input></font> do tipo <font color="red">"range"</font>. O elemento range será tipicamente 
-                apresentado como o controle da barra de rolagem ; configuramos ele 
+                apresentado como o controle da barra de rolagem. Nós o configuramos 
                 para permitir qualquer valor entre 0.0 e 1.0 em cada posição.
             </p>
             <div class="codigo">
@@ -102,14 +106,14 @@
             </div>
             <p>
                 Especificamos um valor padrão de 0.5, e provemos um id <font color="red">”volume”</font>
-                no qual é usado para leitura no código javascript.
+                que é usado para leitura no código JavaScript.
             </p>
             
             <h4>A seleção de forma de onda</h4>
             <p>
-                E embaixo da barra de configurações, colocamos um rótulo e um elemento 
-                <font color="iceblue">&lt;select></font> nomeado de <font color="red">"waveform"</font> cujas opções correspondem às formas 
-                de onda disponíveis.
+                Embaixo da barra de configurações, colocamos um rótulo e um elemento 
+                <font color="iceblue">&lt;select></font> nomeado de <font color="red">"waveform"</font> cujas
+                opções correspondem às formas de onda disponíveis.
             </p>
             <div class="codigo">
                 <ol>
@@ -166,9 +170,9 @@
 
             <h4>A seleção da frequência</h4>
             <p>
-                Para a parte de frequência foi colocado outra barra de rolagem com 
-                o elemento range, configuramos ele para receber valores de 0 a 6 
-                com passo de 2.
+                Para a parte de frequência foi colocada outra barra de rolagem com 
+                o elemento range, configuramos para receber valores de 0 a 6 
+                com passo 2.
             </p>
             <div class="codigo">
                 <ol>
@@ -275,7 +279,7 @@
                     variável do tipo <font color="iceblue">int</font>
                 </li>
                 <li>
-                    <strong>freq1</strong> recebe o <strong>freq0 + 1</strong> pois no teclado é usado 2 
+                    <strong>freq1</strong> recebe o <strong>freq0 + 1</strong> pois no teclado são usadas 2 
                     oitavas por frequência selecionada
                 </li>
                 <li>
@@ -296,14 +300,13 @@
 
             <h4>Criando a tabela de notas</h4>
             <p> 
-                função <font color="red">createNoteTable( )</font> constrói um vetor notas para conter um vetor de 
-                objetos representando cada oitava. Cada oitava, possui uma propriedade para 
-                cada nota nessa oitava; O nome dessa propriedade é o nome da nota (utilizando 
-                da notação em inglês, como "C" para representar "dó"), e o valor é a frequência, 
-                em Hertz, daquela nota.
+                A função <font color="red">createNoteTable( )</font> constrói um vetor notas que tem um 
+                outro vetor de objetos representando a frequência de cada nota em 8 oitavas. Assim, cada nota
+                tem um nome (utilizando a notação em inglês, com "C" para representar "dó"), e um valor numérico, 
+                a frequência em Hertz.
             </p>
             <p>
-                obs: as frequências foram retiradas de acordo com
+                Observação: as frequências foram retiradas da página
                 <a href="https://pt.wikipedia.org/wiki/Lista_de_frequ%C3%AAncias_das_teclas_de_piano">Lista de frequências das teclas de piano</a>
             </p>
             <div class="codigo">
@@ -381,17 +384,16 @@
                     </li>
                 </ol>
             </div>
-            <p>Várias oitavas não mostradas por questões de brevidade.<br>
-            Você pode acessá-lo completo <a href="js/notas.js">aqui.</a></p>
+            <p>Aqui mostramos só duas notas por questões de brevidade.<br>
+            Você pode acessar a lista completa em <a href="js/notas.js">notas.js.</a></p>
             <p>
-                Cada objeto, que fica dentro do vetor tem uma variável para 
-                identificação da nota e as frequências da nota da oitava 0 
-                até a oitava 7,com esse vetor conseguimos acessar todos os 
-                valores das frequências disponíveis ali
+                Usando o índice da nota e da oitava, conseguimos acessar todos os 
+                valores das frequências disponíveis no vetor notas.
             </p>
             <p>
-                exemplo com <strong>notas[1].freq[3]</strong>, acessamos a nota <strong>C#</strong> com o valor de
-                frequência <strong>138.5913</strong> da terceira oitava.
+                Por exemplo, com <strong>notas[1].freq[3]</strong>, acessamos a nota <strong>C#</strong> com o valor de
+                frequência <strong>138.5913</strong> da quarta oitava (índice 3, lembrando que os índices 
+                de um vetor começam em zero).
             </p>
             
             <h4>Construindo o teclado</h4>
@@ -488,8 +490,8 @@
             </div>
             <ol>
                 <li>
-                    Um manipulador de eventos é estabelecido ao chamar nosso velho amigo 
-                    <font color="red">addEventListener()</font> para cuidar dos eventos do change no controle de 
+                    Um manipulador de eventos é estabelecido ao chamar um 
+                    <font color="red">addEventListener()</font> para cuidar dos eventos do <i>change</i> no controle de 
                     ganho geral. Isso vai simplesmente atualizar o módulo de ganho de 
                     volume para o novo valor.
                 </li>
@@ -504,7 +506,7 @@
                 A função <font color="red">createKey( )</font>  é chamada toda vez que queremos que uma tecla 
                 seja apresentada no nosso teclado virtual. Ela cria elementos da 
                 tecla e seu rótulo, adiciona informação dos atributos ao elemento 
-                para uso posterior, e coloca modificadores de eventos para os 
+                para uso posterior e coloca modificadores de eventos para os 
                 eventos que nos importam.
             </p>
             <div class="codigo">
@@ -677,14 +679,14 @@
             </div>
             <p>
                 A função recebe a nota e a frequência, cria um botão e adiciona 
-                os eventos de toque que faz tocar o sintetizador.
+                os eventos de toque que faz o sintetizador gerar som.
             </p>
 
             <h4>Fazendo música</h4>
             <p>
                 O trabalho da função <font color="red">playTone( )</font> é tocar um tom em uma dada frequência. 
                 Isso será usado pelo modificador para eventos acionados nas teclas do 
-                teclado, para que toquem as notas apropriadas.
+                teclado para que toquem as notas apropriadas.
             </p>
             <div class="codigo">
                 <ol>
@@ -736,15 +738,15 @@
                 O <font color="red">playTone( )</font> começa criando um novo 
                 <font color="iceblue">OscillatorNode</font> ao chamar o 
                 método <font color="iceblue">AudioContext.createOscillator( )</font>.
-                Então conectamos ele para
-                o módulo de ganha geral ao chamar o novo método de osciladores 
-                <font color="red">OscillatorNode.connect( )</font> method;, Que determina ao oscilador 
-                onde ele irá mandar seu output. Ao fazer isso, mudar o valor 
+                Então o conectamos para
+                o módulo de ganho geral ao chamar o novo método de osciladores 
+                <font color="red">OscillatorNode.connect( )</font> que determina ao oscilador 
+                onde ele irá mandar sua saída. Ao fazer isso, mudar o valor 
                 do ganho do módulo de ganho geral irá mudar o volume de todos 
                 os tons gerados.
             </p>
             <p>
-                A variável type lê o que o usuário colocou na caixa de formas 
+                A variável <i>type</i> lê o que o usuário colocou na caixa de formas 
                 de ondas e define para oscilador o tipo de onda.
             </p>
 
@@ -752,7 +754,7 @@
             <p>
                 A função <font color="red">noteReleased( )</font> é o modificador 
                 de eventos chamado quando o usuário solta o botão do mouse ou 
-                move o mouse para fora da tecla que ele está tocando.
+                move o mouse para fora da tecla que está tocando.
             </p>
             <div class="codigo">
                 <ol>
@@ -782,9 +784,9 @@
             <p>
                 A barra de rolagem do volume na barra de opções dá uma simples 
                 interface para mudar o valor do ganho no módulo de ganho geral, 
-                então mudando o volume de todas as notas sendo tocadas. O metódo 
+                então mudando o volume de todas as notas sendo tocadas. O método 
                 <font color="red">changeVolume( )</font> é o modificador do 
-                evento change na barra de rolagem.
+                evento <i>change</i> na barra de rolagem.
             </p>
             <div class="codigo">
                 <ol>
@@ -829,8 +831,8 @@
                 </ol>
             </div>
             <h4>Resultado</h4>
-            <p>Coloque tudo junto, o resultado é um simples e funcional teclado virtual 
-            que funciona com o clique, ele pode ser visto na próxima página.</p>
+            <p>Unindo tudo, o resultado é um teclado virtual simples e funcional, como você 
+                pode ver e usar na próxima página.</p>
         </div>
     </div>
 </body>
