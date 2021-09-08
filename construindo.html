@@ -17,7 +17,7 @@
             <h1>Construindo um Sintetizador</h1>
             <p>
                 Agora que vimos o que faz um oscilador, vamos desenhar um diagrama de um 
-                sintetizador simples. Esse sintetizador irá conter apenas um 
+                sintetizador simples. Esse sintetizador terá apenas um 
                 oscilador dente de serra que irá mandar o sinal diretamente para a saída de
                 áudio e então para os alto-falantes. O tom (ou seja, a frequência) do oscilador será 
                 controlado por um teclado.
@@ -54,18 +54,18 @@
                 que não possuímos forma alguma de controlar o volume do oscilador, 
                 nosso instrumento sempre estará gerando som (não aqui no Modulator, 
                 em que o oscilador foi programado para só ter saída quando o teclado é pressionado;
-                mas se você estiver usando um oscilador físico, é isso que irá acontecer: som sempre)
-                Para resolver isso, precisamos adicionar um mecanismo de controle
+                mas se você estiver usando um oscilador físico, é isso que irá acontecer: som sempre).
+                Para resolver isso, precisamos adicionar um mecanismo de controle:
                 um amplificador controlado por tensão (VCA, do inglês <i>voltage controlled amplifier</i>). 
-                A função desse amplificador é controlar o volume, normalmente 
-                chamado de amplitude do sinal. Osciladores e outros módulos que geram 
-                som estão sempre gerando um som; é o amplificador controlado por 
+                A função desse amplificador é controlar o volume, ou melhor, a amplitude do sinal.
+                Osciladores e outros módulos que geram 
+                som estão sempre com saída ligada; é o amplificador controlado por 
                 tensão que os mantém em silêncio quando não estão sendo tocados.
             </p>
             <p>
                 Nos sintetizadores analógicos, os amplificadores controlados por tensão 
                 são comandados através de cabos que levam um sinal de tensão/corrente elétrica.
-                Para sintetizadores digitais, os amplificadores controlador por tensão podem não ser tão aparentes,
+                Para sintetizadores digitais, os amplificadores controlados por tensão podem não ser tão aparentes,
                 mas ainda é importante saber como funcionam.
             </p>
             <p>
@@ -77,7 +77,7 @@
                 O cabo “porta” indo do teclado ao amplificador controlado por tensão é 
                 um sinal que manda uma de duas mensagens ao VCA: “ligado” se uma tecla 
                 for pressionada ou “desligado” caso contrário. Quando o sinal da porta 
-                está como desligado, não escutamos nada, quando está como 
+                está como desligado, não escutamos nada; quando está como 
                 ligado, então o amplificador controlado por tensão 
                 transportará o áudio do oscilador para a saída de áudio. O cabo 
                 “velocidade” manda um sinal para o amplificador controlado por tensão 
