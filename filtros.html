@@ -10,172 +10,154 @@
 <body onload="numPages()">
     <header>
         <a href="index.html">Sintetizador</a>
-        <a id="sobre" href="sobre.html">Sobre</a>
+        <a id="sobre" href="sobre.html">Sobre/About</a>
     </header>
     <div id="principal">
         <div id="conteudo">
             <h1>Filtros</h1>
-            <p>Filtros são de forma geral, ferramentas para manipular sinais. Qualquer 
+            <p>Filtros são, de forma geral, ferramentas para manipular sinais. Qualquer 
                 dispositivo que modifique um sinal em qualquer forma é tecnicamente um 
-                filtro. Entretanto, ao se referir a um filtro, normalmente se referem 
-                ao tipo de filtro que modificam o conteúdo harmônico do sinal, alterando 
-                as características do áudio no domínio da frequência. Esse é o sentido 
-                que usaremos para o termo “filtro” neste artigo.
+                filtro. Entretanto, normalmente nos referimos a filtro que modificam o conteúdo harmônico de sinais,
+                alterando as características do áudio no domínio da frequência. São tecnicamente chamados
+                de filtros seletores de sinais. Esse é o sentido que usaremos para o termo filtro nesta página.
             </p>
             <p>
-                Filtros permitem que você selecione uma faixa de frequências em um som, 
-                e amplifique ou reduza essas frequências. Diminuindo frequências altas 
-                ou aumentando frequências baixas em um som, fazendo com que soem abafadas. 
+                Filtros permitem que você selecione uma faixa de frequências em um som 
+                e amplifique ou reduza a energia nessas frequências. Podemos diminuir frequências altas 
+                ou aumentar frequências baixas em um som, fazendo com que o som resultante fique abafado. 
                 Filtros desse tipo acontecem na vida real o tempo todo. Por exemplo, 
-                se você tentar falar com alguém com algo cobrindo sua boca, parte da alta 
+                se você tentar falar com algo cobrindo sua boca, parte da alta 
                 frequência da sua voz será filtrada pelo obstáculo, deixando sua voz abafada.
             </p>
             <h2>Filtros passa-baixa e passa-alta</h2>
             <p>Um filtro passa-baixa permite com que baixas frequências atravessem o 
-                filtro, enquanto barrando frequências altas, te permitindo escutar 
-                apenas as baixas frequências. Enquanto isso, o filtro passa-alta faz 
-                exatamente o contrário, permitindo apenas a passagem de altas 
-                frequências enquanto barrando as baixas. O ponto a partir de onde 
-                começa a barragem é chamado de “frequência de corte”.
+                filtro, enquanto diminui a energia em frequências altas, te permitindo escutar 
+                melhor apenas as baixas frequências. O filtro passa-alta faz 
+                exatamente o contrário, permitindo a passagem de altas 
+                frequências enquanto diminui a energia das baixas. O ponto a partir de onde 
+                começa o efeito de diminuição da energia é chamado de “frequência de corte”.
             </p>
-            <img src="IMG/filtro01.png" alt="">
-            <img src="IMG/filtro02.png" alt="">
+            <img src="IMG/filtro01.png" alt="Filtro passa-baixa">
+            <img src="IMG/filtro02.png" alt="Filtro passa-alta">
             <h2>Filtros passa-faixa e rejeita-faixa</h2>
             <p>
                 Um filtro passa-faixa é como um passa-baixa e um passa-alta usados em 
-                combinação para isolar um grupo de frequências selecionado para passar, 
-                enquanto barrando todas as outras frequências. O filtro rejeita-faixa 
+                combinação para deixar passar apenas um grupo de frequências selecionado, 
+                enquanto diminui a energia em todas as outras frequências. O filtro rejeita-faixa 
                 funciona de maneira oposta ao passa-faixa, selecionando um grupo para 
-                isolar e NÃO permitir a passagem, enquanto todas as outras frequências 
+                isolar e não permitir a passagem, enquanto todas as outras frequências 
                 podem passar.
             </p>
-            <img src="IMG/filtro03.png" alt="">
-            <img src="IMG/filtro04.png" alt="">
-            <h2>Propriedades dos filtros</h2>
-            <p>
-                Esses filtros possuem uma grande variedade de propriedades na qual 
-                possuímos um certo grau de controle. Para filtros passa-baixa e 
-                passa-alta podemos mudar a frequência de corte, permitindo o controle 
-                do alcance das frequências afetadas. Para filtros passa-faixa e 
-                rejeita-faixa, no lugar de mudar a frequência de corte, podemos mudar 
-                a largura de banda onde se encontra a faixa de frequência afetada.
-            </p>
-            <p>
-                Vários filtros permitem mudanças na ressonância. A ressonância ocorre quando 
-                quando um som na banda passante perto da frequência de corte é mandado de 
-                volta ao filtro conforme ele sai, gerando um feedback. Esse feedback afeta o 
-                volume dessas frequências, assim como o timbre do som. Um pedal wah-wah é um 
-                filtro passa-baixa ressonante com um pedal controlando a frequência de corte.
-            </p>
-            <div id="filtroimagem">
-                <img class="blocomodulator" src="IMG/filtro05.png" alt="">
-                <img class="blocomodulator" src="IMG/filtro06.png" alt="">
-            </div>
+            <img src="IMG/filtro03.png" alt="Filtro passa-faixa">
+            <img src="IMG/filtro04.png" alt="Filtro rejeita-faixa">
+  
             <p>
                 Vamos adicionar um módulo de filtro passa-baixa ao nosso sintetizador. 
-                Colocaremos ele entre os osciladores e nosso amplificador controlado por 
-                tensão. Dependendo de como controlarmos ele, esse filtro pode fazer 
-                vários tipos de mudanças ao nosso som, como diminuir um pouco o agudo das 
-                frequências altas assim como vários outros efeitos especiais.
+                Ele ficará entre o oscilador e nosso amplificador controlado por 
+                tensão. Dependendo da forma de controle, esse filtro pode fazer 
+                vários tipos de mudanças no som, como diminuir um pouco o agudo das 
+                frequências altas assim como vários efeitos especiais.
             </p>
-		<img src="IMG/diagrama03.png" alt="">
+		<img src="IMG/diagrama03.png" alt="Sintetizador com filtro passa-baixa">
 	    <p>
-		Na imagem a seguir, foi adicionado nosso filtro a montagem no modulator,
-		permitindo um controle das frequências, e possuindo parâmetros que permitem
-		a mudança na frequência de corte e de ressonância, assim como o tipo de filtro.
+		No Modulator, temos a mesma configuração: o filtro depois do bloco <i>Osc</i>. 
+
 	    </p>
-		<img class="modulator" src="IMG/Filtromod.PNG" alt="">
+		<img class="modulator" src="IMG/Filtromod.PNG" alt="Filtro no Modulator">
             
             <h2>Sinais de controle</h2>
             <p>Para que tenhamos o melhor do nosso sintetizador, precisamos de uma 
                 maneira de controlar cada um dos seus componentes de forma interna. 
-                enquanto vários sintetizadores tem uma variedade de botões para 
-                controlar o som, a maioria das pessoas tem apenas duas mãos, e é 
-                realmente complicado girar mais de dois potenciômetros ao mesmo 
-                tempo para ajustes. Por sorte, quase todo módulo do sintetizador 
+                Enquanto sintetizadores físicos tem uma variedade de botões para 
+                controlar o som, é realmente complicado girar mais de dois potenciômetros ao mesmo 
+                tempo para ajustes. Por sorte, quase todo módulo de um sintetizador 
                 pode ser controlado por outro módulo. Nosso sintetizador já faz isso, 
-                a frequência do oscilador e o volume do nosso amplificador de tensão 
-                são controlados pelo nosso teclado.
+                a frequência do oscilador e o volume do amplificador de tensão 
+                são controlados pelo teclado.
             </p>
             <h2>Envelope generators</h2>
-            <p>Uma forma que podemos controlar sinais com um sintetizador é usando um 
-                módulo chamado envelope generator. Quando um envelope generator recebe 
-                um sinal “on”, ele manda um novo sinal que pode ser usado para controlar 
+            <p>Uma forma de controlar sinais em um sintetizador é usando um 
+                módulo chamado <i>envelope generator</i> ou gerador de envelope.
+                Quando ele recebe um sinal “on”, ou seja, é ativado, manda um novo sinal que pode ser usado para controlar 
                 outro módulo. Diferente de um oscilador, que repete seu sinal várias 
-                vezes, um envelope generator manda seu sinal apenas uma vez. Mas assim 
+                vezes, um gerador de envelope manda seu sinal apenas uma vez. Mas assim 
                 como um oscilador, podemos olhar o sinal produzido em um gráfico no 
                 domínio do tempo.
             </p>
-            <img src="IMG/envelope.png" alt="">
-            <p>Para cada fração de segundo que o envelope generator estiver ativo, 
-                ele manda um sinal de controle para outro módulo. Uma forma de pensar 
-                no envelope generator é como um mapa para controle automático dos 
+            <img src="IMG/envelope.png" alt="Envelope generator">
+            <p>Uma forma de pensar no gerador de envelope é como um mapa para controle automático dos 
                 módulos. Por exemplo, o envelope da imagem acima começa a mandar um 
                 sinal que gradualmente move de zero até um, que é como girar um 
-                potenciômetro da posição mais à esquerda para a mais a direita. E em 
-                seguida o sinal desce gradualmente até o 0.7, que seria como mover o 
-                potênciometro um pouco para esquerda.
+                potenciômetro da posição mais à esquerda para a mais à direita. E em 
+                seguida o sinal desce gradualmente até 0,6, que seria como mover o 
+                potenciômetro um pouco para esquerda. Fica nesse valor um certo tempo e depois vai gradualmente a zero.
+                Se esse envelope ou envoltória fosse usado para controlar a amplitude de um VCA,
+                ouviríamos um som aumentando gradualmente, depois diminuindo um pouco, mantendo-se por um
+                certo tempo até voltar a zero.
             </p>
-            <p>Envelopes como o usado como exemplo aqui são chamados ADSR envelopes, 
-                tendo esse nome devido aos quatro estágios que possuem: Ataque, 
-                decaimento, sustentação e repouso.
+            <p>Envelopes como o desse exemplo aqui são chamados <i>ADSR envelopes</i>, 
+                tendo esse nome devido aos quatro estágios que possuem: ataque, 
+                decaimento, sustentação e repouso (do inglês <i>attack, decay, sustain, and release</i>) .
                 Quando colocamos um módulo ADSR em um sintetizador, especificamos o 
                 que deve acontecer durante cada estágio assim que receber o sinal “on”.
-                 Por exemplo, o envelope acima possui um estágio de ataque que demora 
-                 250 milissegundos, onde o nível se eleva a 1. depois disso possui o 
-                 estágio de decaimento, demorando 200 milissegundos onde o nível 
-                 diminui para 0.7, durante o estágio de sustentação o nível se mantém 
-                 em 0.7 enquanto o envelope generator estiver recebendo o sinal “on” e 
-                 quando o sinal muda para “off” entramos no estágio de repouso, onde 
-                 demora 200 milissegundos para o nível descer a 0.
+                Por exemplo, o envelope acima possui um estágio de ataque que demora 
+                250 milissegundos, onde o nível se eleva a 1. Depois disso, possui o 
+                estágio de decaimento, demorando 200 milissegundos onde o nível 
+                diminui para 0,6. Durante o estágio de sustentação o nível se mantém 
+                em 0,6 enquanto o gerador de envelope estiver recebendo o sinal “on”.
+                Quando o sinal muda para “off”, entramos no estágio de repouso, em que 
+                demora 200 milissegundos para o nível descer a 0.
             </p>
             <p>
                 Envelopes ADSR são frequentemente usados para controlar o volume de um 
-                som, mesmo eles podendo ser usados para controlar quase tudo dentro 
+                som, mesmo que possam ser usados para controlar quase tudo dentro 
                 de um sintetizador modular. Por exemplo, o mesmo envelope pode 
                 controlar um filtro passa-baixa ressonante, fazendo um efeito de 
                 um “woosh” conforme tocamos cada nota.
             </p>
             <p>
                 Vamos adicionar um ADSR para o nosso sintetizador, ele irá fazer o som 
-                ter um fade-in gradual, sustentar, e então cair rapidamente. Para isso 
-                usaremos o módulo ADSR no modulator conectado ao input do nosso 
+                ter um <i>fade-in</i> gradual, sustentar, e então cair rapidamente. Para isso 
+                usaremos o módulo ADSR no Modulator conectado à entrada do nosso 
                 amplificador.
             </p>
-            <img src="IMG/diagrama04.png" alt="">
+            <img src="IMG/diagrama04.png" alt="Sintetizador com envelope ADSR">
+
             <h2>Osciladores de baixa frequência</h2>
-            <p>Outro tipo de módulo frequentemente utilizado para controlar outro 
-                módulos é o oscilador de baixa frequência, também conhecido como LFO. 
+            <p>Um módulo que também é frequentemente usado para controlar parâmetros de outros 
+                módulos é o oscilador de baixa frequência, também conhecido como LFO (do inglês
+                <i>low frequency oscilator</i>). 
                 Um LFO é como um oscilador normal, podendo ter qualquer forma de 
-                onda e amplitude que especificarmos, mas possui uma frequência super 
-                baixa usada normalmente para controlar outros módulos no sintetizador. 
+                onda e amplitude que especificarmos, mas possui uma frequência muito 
+                baixa, usada normalmente para controlar outros módulos no sintetizador. 
                 Por exemplo, um LFO pode mover o nível de volume do amplificador para 
                 cima e para baixo, causando um efeito de tremolo. LFOs são como 
                 pequenos robozinhos que ficam girando os potenciômetros para você.
             </p>
             <p>Vamos adicionar um LFO para o nosso sintetizador que causa o tom do 
-                nosso oscilador para balançar para cima e para baixo um pouco, como 
-                um violinista move a mão para gerar um vibrato, também iremos usar 
-                o envelope generator para modular a frequência do nosso filtro, para 
+                nosso oscilador ser alterado para cima e para baixo um pouco, como 
+                um violinista move a mão para gerar um vibrato. Também iremos usar 
+                o gerador de envelope para modular a frequência do nosso filtro, para 
                 que tenhamos um efeito de varredura automáticamente em cada nota, 
-                especialmente se aumentarmos a ressonância do filtro. Usando um sinal 
-                de controle para mudar a frequência de outro módulo é chamado de 
+                especialmente se aumentarmos a ressonância do filtro. Usar um sinal 
+                de controle de baixa frequência para mudar a frequência de outro módulo é chamado de 
                 modulação de frequência, ou FM, como indicado no diagrama abaixo.
             </p>
-            <img src="IMG/diagrama05.png" alt="">
+            <img src="IMG/diagrama05.png" alt="Sintetizador com LFO">
 
 	    <p>
-		Na imagem a seguir, o ADSR foi adicionado ao modulator, nos dando
-		 controle sobre cada um dos 4 estágios discutidos anteriormente neste
-		 tutorial, permitindo um controle sobre os efeitos de aúdio.
+		Na imagem a seguir, um controle de envelope ADSR foi adicionado a um filtro no Modulator. Esse controle 
+        pode atuar sobre os parâmetros do filtro, por exemplo, sobre a frequência, fazendo que com o filtro
+        agora tenha frequência de corte variável. Qual o resultado? Liberdade de criar!
 	    </p>
-	    <img class="modulator" src="IMG/ADSRmod.PNG" alt="">
+	    <img class="modulator" src="IMG/ADSRmod.PNG" alt="ADSR no filtro">
             <h2>Conclusão</h2>
             <p>
                 Quase todos os sintetizadores disponíveis comercialmente e softwares 
-                de síntese musical operam usando esses principios básicos, com esse 
-                conhecimento e um pouco de ingenuidade, você nunca precisará usar 
-                um preset novamente.
+                de síntese musical operam usando esses princípios básicos. Com esse 
+                conhecimento e criatividade, você pode gerar sons fantásticos! Teste os Presets do Modulator
+                (tem sintetizador de sino, robô, espaço, ...) e faça suas experiências! Sintetizadores são ciência
+                e arte!
             </p>
         </div>
     </div>

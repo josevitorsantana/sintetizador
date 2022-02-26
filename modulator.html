@@ -10,64 +10,68 @@
 <body onload="numPages()">
     <header>
         <a href="index.html">Sintetizador</a>
-        <a id="sobre" href="sobre.html">Sobre</a>
+        <a id="sobre" href="sobre.html">Sobre/About</a>
     </header>
     <div id="principal">
         <div id="conteudo">
             <h1>Modulator</h1>
             <p>
-                  O <b><a href="https://lcrespom.github.io/synth/">modulator</a></b>  será o software utilizado para exemplos, aqui faremos uma introdução ao
-                modulator para melhor entendimento do leitor. O modulator se encontra separado com 6 módulos
-                diferentes, que serão discutidos a seguir.
+                Vamos continuar usando o <a href="https://lcrespom.github.io/synth/">modulator</a> para entender os blocos
+                que compõem um sintetizador. O Modulator tem 6 painéis que serão discutidos a seguir.
             </p>
-            <p>você pode acessá-lo <b><a href="https://lcrespom.github.io/synth/">clicando aqui.</a></b></p>
+            
+            <p> Se você prefere um tutorial em vídeo, Thiago, um dos autores deste material, gravou um passo a passo de como configurar e usar o Modulator.
+            </p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HGLBLi8_6_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             
             <h2>Audio Node Graph</h2>
-                <img class="modulator" src="IMG/audionodegraph.png" alt="">
+                <img class="modulator" src="IMG/audionodegraph.png" alt="Painel Audio node graph no Modulator">
                 <p>
-                    O Audio Node Graph é o módulo onde ocorre a construção do modulador, podendo ser colocados
-                    e ligados diferentes blocos para diferentes efeitos no som, a ligação dos blocos é feita com
-                    o botão SHIFT ao clicar em um bloco e em outro em seguida, e para desfazer a ligação, apenas
-                    repita o processo com blocos já ligados.
+                    O Audio Node Graph é o painel onde ocorre a construção do sintetizador, podendo ser colocados
+                    e ligados diferentes blocos para diferentes efeitos no som. Como mostrado anteriomente, 
+                    a ligação dos blocos é feita com a tecla <i>shift</i> ao clicar em um bloco e em outro em seguida.
+                    Para desfazer a ligação, apenas repita o processo com blocos já ligados.
                 </p>
                 
                 <h2>Palette</h2>
-                <img id="palette" src="IMG/palette.png" alt="">
+                <img id="palette" src="IMG/palette.png" alt="Painel Palette no Modulator">
                 <p>
-                     O módulo Palette é o módulo onde se encontram os blocos a serem colocados no Audio Node Graph,
-                    basta clicar em um bloco e ele será adicionado ao Audio Node Graph, cada bloco possui propriedades
-                    diferentes e serão trabalhados mais a frente.
+                    No painel Palette se encontram os blocos a serem colocados no Audio Node Graph. 
+                    Basta clicar em um bloco e ele será adicionado ao Audio Node Graph.
                 </p>
                 
                 
             
             <h2>Node Parameters</h2>
-                <img class="modulator" src="IMG/nodeparameters.png" alt="">
+                <img class="modulator" src="IMG/nodeparameters.png" alt="Painel Node parameters no Modulator">
             <p>
-                O módulo Node Parameters serve para modificar o funcionamento de um bloco selecionado  no Audio Node Graph,
-                mudando seus parâmetros.
+                O painel Node Parameters serve para modificar o funcionamento de um bloco selecionado no Audio Node Graph,
+                alterando seus parâmetros.
             </p>
             <h2>Presets</h2>
-            <img id="presets" src="IMG/presets.png" alt="">
+            <img id="presets" src="IMG/presets.png" alt="Painel Presets no Modulator">
             <p>
-                O módulo Presets serve para salvar e reutilizar modificações feitas pelo usuário,
-                ele também possui opções padrão já salvas como exemplos. <br>
-                você tambem pode baixar o preset pronto da pagina anterior:
-                <a href="https://drive.google.com/file/d/1h9ycaMrxU7nYzehtW9i2GwNpRF_s22c5/view?usp=sharing">Preset 01</a> e
-                <a href="https://drive.google.com/file/d/1_AzEcY2KCnQsyjJfZiA8am2yoIaQhJVg/view?usp=sharing">Preset 02</a>
+                O painel Presets serve para salvar e reutilizar modificações feitas pelo usuário,
+                ele também possui opções padrão já salvas como exemplos.
+            </p>
+            <p> Você pode baixar os presets que fizemos na página anterior:
+                <a target="_blank" href="preset/Dente-de-serra.json">Preset 01 - Só oscilador</a> e
+                <a target="_blank" href="preset/Controle-do-volume.json">Preset 02 - Oscilador + Gain</a>
             </p>
             <h2>Piano Keyboard</h2>
-            <img class="modulator" src="IMG/pianokeyboard.png" alt="">
+            <img class="modulator" src="IMG/pianokeyboard.png" alt="Painel Piano keyboard no Modulator">
             <p>
-                É o teclado do sintetizador, utilizado para tocar as notas com as modificações estabelecidas,
-                também é possível mudar as oitavas, o portamento e o arpejo do instrumento nesse módulo.
+                É o teclado do sintetizador, utilizado para tocar as notas com as modificações estabelecidas.
+                Também é possível mudar as oitavas, o portamento e o arpejo do instrumento nesse módulo.
+                Você pode usar o mouse, as teclas do teclado de seu computador ou um piano digital/teclado musical conectado via MIDI.
             </p>
             
             <h2>Graph</h2>
             <img id="graph" src="IMG/graph.png" alt="">
             <p>
-                O módulo Graph é um módulo exclusivo para visualização de onda, podendo ver a forma de onda uma vez
-                que tocar em uma nota no teclado.
+                O módulo Graph é um módulo exclusivo para visualização de onda, onde você pode ver uma representação 
+                em frequência (o espectro) e a forma de onda gerada quando tocar no teclado do piano.
             </p>
         </div>
     </div>

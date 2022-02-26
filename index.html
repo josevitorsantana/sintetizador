@@ -10,48 +10,83 @@
 <body onload="numPages()">
     <header>
         <a href="index.html">Sintetizador</a>
-        <a id="sobre" href="sobre.html">Sobre</a>
+        <a id="sobre" href="sobre.html">Sobre/About</a>
     </header>
     <div id="principal">
         <div id="conteudo">
 
         <div>
-            <h1>Ondas de som e osciladores</h1>
+            <h1>Introdução</h1>
+            <p>Este material é uma introdução a sintetizadores de áudio. 
+            Ele começa com uma apresentação sobre osciladores e depois explica outros blocos básicos.
+            Além de aprender com o texto, você poderá gerar seus próprios sons usando um sintetizador online
+            chamado Modulator. Depois, se você quiser se aprofundar ainda mais e tiver interesse em programação,
+            apresentamos um tutorial de criação de um sintetizador em JavaScript.
+            </p>
+            <p>O que será visto?</p>
+            <ol>
+                <li>Ondas sonoras e osciladores</li>
+                <li><a href="formasdeondas.html">Formas de onda básicas geradas por um oscilador</a></li>
+                <li><a href="construindo.html">Amplificador controlado por tensão</a></li>
+                <li><a href="modulator.html">O sintetizador online Modulator</a></li>
+                <li><a href="filtros.html">Filtros e geradores de envelope ADSR</a></li>
+                <li><a href="codigo.html">Faça seu próprio sintetizador em JavaScript</a></li>
+                <li><a href="sintetizador.html">Demonstração do sintetizador em JavaScript</a></li>
+            </ol>
+
+            <h1>Ondas Sonoras e Osciladores</h1>
+            <p> 
+                Sons são ondas de pressão que viajam pelo ar (ou algum outro meio), 
+                 chegando a nossos ouvidos. Diferente das ondas do mar, que se 
+                 movem para cima e para baixo, as ondas sonoras se movem para frente 
+                 e para trás (tecnicamente, ondas do mar são transversais e as sonoras 
+                 são longitudinais, se movem na mesma direção da vibração que as provoca).
+                 Essas ondas se movem e a variação de pressão do ar que entra  
+                 e sai dos nossos ouvidos é percebida como um som.
+            </p>
+
+            <p> Talvez você não tenha percebido, mas uma parte de um alto-falante, chamada de cone, se move.
+                Esse movimento pressiona as moléculas de ar e isso se propaga até chegar aos nossos ouvidos. 
+                A animação seguinte é excelente para mostrar as ondas que se propagam no ar
+                quando o cone do alto-falante se move.
+            </p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RxdFP31QYAg?start=168" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+            </iframe>
+            
             <p>
-                 Sons são ondas de pressão que viajam pelo ar, ou algum outro meio,
-                 chegando a nossos ouvidos. Diferente das ondas do oceano, que se 
-                 movem para cima e para baixo, ondas de pressão se movem para frente 
-                 e para trás. Essas ondas então se movem para nossos ouvidos entrando 
-                 e saindo, e percebemos isso como um som. Sintetização de som é a arte 
+                 E como podemos criar sons? Aqui, nosso interesse é pelos sintetizadores, 
+                 instrumentos eletrônicos analógicos ou digitais. Sintetização de som é a arte 
                  de criar sinais que, quando transformados em ondas sonoras por um 
-                 alto-falante, pessoas acham interessante. Durante o percurso deste 
-                 artigo iremos explorar dispositivos que criam e modificam sinais 
+                 alto-falante, as pessoas achem interessantes. Durante o percurso deste 
+                 artigo, iremos explorar dispositivos que criam e modificam sinais 
                  usados para sintetizar o som.
             </p>
 	
             <p>
-                O primeiro desses dispositivos que iremos considerar é chamado de oscilador.
-                Um oscilador gera um sinal consistente que se repete. Sinais de osciladores
-                e outras fontes são usadas para controlar o movimento dos cones no nosso 
-                alto-falante, que fazem as ondas sonoras que chegam aos nossos ouvidos.
+                O primeiro desses dispositivos é chamado de oscilador.
+                Um oscilador gera um sinal que se repete e serve de base para etapas seguintes.
                 Se você amarrar uma ponta de uma corda em uma maçaneta, se afastar um pouco
                 e balançar a outra ponta da corda pra cima e pra baixo bem rápido, você vai
                 estar fazendo mais ou menos a mesma coisa que um oscilador, tendo como diferença
-                que você está balançando uma corda, enquanto um oscilador faz isso com um sinal de áudio.
+                que você está balançando uma corda, enquanto um oscilador faz isso com um sinal de áudio
+                que depois será transformado em movimentação das moléculas de ar.
             </p>
 
     
-	        <img src="IMG/onda01.png" alt="">
+	        <img src="IMG/onda01.png" alt="Onda senoidal amortecida">
 
             <p>
                 Sinais de áudio  são normalmente representados em um gráfico onde o eixo horizontal
                 representa o tempo e o eixo vertical representa a pressão no sinal. Isso é chamado
-                de representação do áudio no domínio do tempo. Gráficos no domínio do tempo são como
-                instruções para alto-falantes sobre como mover-se para dentro e para fora. Quando o gráfico
-                lê 1, o cone do alto falante é empurrado completamente para fora, e quando lê -1, o cone
+                de representação do áudio no domínio do <b>tempo</b>. Esse gráfico no domínio do tempo representa as 
+                instruções para um alto-falante se mover para dentro e para fora. Quando o gráfico
+                indica 1, o cone do alto falante é empurrado completamente para fora, e quando indica -1, o cone
                 é puxado completamente para dentro. Esse movimento cria uma onda de pressão no ar que
-                escutamos como um som, se um cone do alto-falante se mover para dentro e para fora de
-                acordo com o gráfico acima, ele vai fazer o som de um tambor.
+                escutamos como um som.
             </p>
    
         </div>
@@ -59,15 +94,14 @@
    
             <h1>Frequência e tom</h1>
             <p>
-                A quantidade de vezes que uma onda de som se move para dentro e para fora é chamado de frequência.
-                Frequência é medida em ciclos por segundo. O tamanho de um ciclo único de uma forma de onda
-                é a quantidade de tempo até que a forma de onda comece a se repetir. Pessoas normalmente escutam
+                O número de vezes que uma onda de som se repete no tempo é chamado de frequência.
+                Frequência é medida em ciclos por segundo. Pessoas normalmente escutam
                 um aumento da frequência de uma onda sonora conforme ela aumenta de tom. Quando a frequência
                 de um oscilador é dobrada, o tom sobe uma oitava. Por exemplo, um oscilador gerando um sinal
-                que se repete a cada segundo 440 vezes vai ter o mesmo tom que um Lá médio em um piano.
-                Um oscilador gerando um sinal que se repete a cada segundo 880 vezes vai ter o mesmo tom
-                que um Lá uma oitava acima do Lá médio. Uma forma comum de dizer “Ciclos por segundo
-                ” é usando a unidade de medida “Hertz”, abreviada como “Hz”.
+                que se repete 440 vezes a cada segundo corresponde ao tom Lá médio em um piano.
+                Um oscilador gerando um sinal que se repete 880 vezes a cada segundo corresponde a um tom
+                Lá uma oitava acima do Lá médio. Uma forma comum de dizer ciclos por segundo
+                é usando a unidade de medida Hertz, abreviada como Hz.
             </p>
         </div>
 

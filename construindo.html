@@ -10,80 +10,86 @@
 <body onload="numPages()">
     <header>
         <a href="index.html">Sintetizador</a>
-        <a id="sobre" href="sobre.html">Sobre</a>
+        <a id="sobre" href="sobre.html">Sobre/About</a>
     </header>
     <div id="principal">
         <div id="conteudo">
             <h1>Construindo um Sintetizador</h1>
             <p>
-                Agora que entendemos osciladores, vamos desenhar um diagrama de um 
-                sintetizador simples. Esse sintetizador irá conter apenas um 
-                oscilador Dente-de-Serra que irá mandar o sinal para a saida de
-                áudio e então para os alto-falantes. O tom do oscilador vai ser 
-                controlado por um teclado
+                Agora que vimos o que faz um oscilador, vamos desenhar um diagrama de um 
+                sintetizador simples. Esse sintetizador terá apenas um 
+                oscilador dente de serra que irá mandar o sinal diretamente para a saída de
+                áudio e então para os alto-falantes. O tom (ou seja, a frequência) do oscilador será 
+                controlado por um teclado.
             </p>
-            <img class="diagrama" src="IMG/diagrama01.png" alt="">
-            <p>Componentes individuais de um sintetizador que fazem uma única e 
+            <img class="diagrama" src="IMG/diagrama01.png" alt="Diagrama de um sintetizador básico, só com oscilador">
+
+            <p>Os componentes individuais de um sintetizador que fazem uma única e 
                 simples função, como osciladores e filtros, são chamados de módulos.
-                Um sintetizador modular é um sintetizador feito ao juntar vários 
+                Um sintetizador modular é um sintetizador feito ao conectar, integrar vários 
                 pequenos módulos de maneiras diferentes. Nos diagramas que 
-                utilizamos, as linhas conectando os módulos são como cabos virtuais,
-                mandando o sinal entre eles como um cabo de áudio faria na vida real.
+                utilizamos, as linhas conectando os módulos são como cabos de áudio virtuais.
             </p>
-            <p>A imagem a seguir demonstra um simples oscilador ligado apenas apenas a
-                 saída feito no modulator, para olhar o funcionamento no modulator você 
-                 pode usar este preset ou reconstruir a imagem com os blocos.
-                Nesta etapa foi utilizado o bloco “osc”, que serve para gerar uma onda 
-                entre os tipos de forma de onda básica que podem ser selecionados na 
-                opção “Node Parameters”, também é possível modificar a frequência das 
-                ondas e consequentemente, o tom.
+            <p>A partir de agora, vamos dar "vida" a esses módulos, usando um sintetizador online chamado
+                <a href="https://lcrespom.github.io/synth/">Modulator</a>. Você pode abrir uma outra página
+                e ir experimentando junto o que iremos mostrar. Quando você abre o Modulator, já aparece
+                um sintetizador completo. Você pode clicar na seta à esquerda no painel <i>Presets</i> para ter
+                uma tela em branco, só com o bloco <i>Out</i>.
             </p>
-            <img class="blocomodulator" src="IMG/blocomodulador01.png" alt="">
+
+            <p> Vamos começar, então, com um simples oscilador ligado apenas à
+                saída (<i>Out</i> no Modulator). O oscilador é o bloco <i>Osc</i>. Para conectá-lo à saída <i>Out</i>, 
+                coloque o ponteiro do mouse sobre o bloco <i>Osc</i>, clique <i>shift</i> e aperte o botão esquerdo do mouse.
+                Você vai ver uma linha tracejada que pode ser movida com o mouse até o bloco <i>Out</i>.
+            </p>
+            <p>
+                Nesta etapa foi utilizado o bloco <i>Osc</i>. Os tipos de forma de onda podem ser selecionados no 
+                painel <i>Node Parameters</i>. Para ouvir, clique em uma das teclas do painel <i>Piano Keyboard</i>.
+                Cuidado com o volume, principalmente se estiver usando fone de ouvido!
+            </p>
+            <img class="blocomodulator" src="IMG/blocomodulador01.png" alt="Bloco Osc ligado à saída Out no Modulator">
             <h2>Controle de volume</h2>
             <p>
-                Temos alguns problemas com esse design de sintetizador, um deles é 
+                Temos alguns problemas com esse design de sintetizador: um deles é 
                 que não possuímos forma alguma de controlar o volume do oscilador, 
-                nosso instrumento sempre estará fazendo barulho. Para consertar esse 
-                problema, precisamos adicionar um Amplificador controlado por tensão. 
-                A função desse amplificador é para controlar o volume, normalmente 
-                chamado de amplitude do sinal. Osciladores e outros módulos que geram 
-                som estão sempre gerando um som, e o Amplificador controlado por 
-                tensão é o que mantém eles em silêncio quando não estão sendo tocados.
+                nosso instrumento sempre estará gerando som (não aqui no Modulator, 
+                em que o oscilador foi programado para só ter saída quando o teclado é pressionado;
+                mas se você estiver usando um oscilador físico, é isso que irá acontecer: som sempre).
+                Para resolver isso, precisamos adicionar um mecanismo de controle:
+                um amplificador controlado por tensão (VCA, do inglês <i>voltage controlled amplifier</i>). 
+                A função desse amplificador é controlar o volume, ou melhor, a amplitude do sinal.
+                Osciladores e outros módulos que geram 
+                som estão sempre com saída ligada; é o amplificador controlado por 
+                tensão que os mantém em silêncio quando não estão sendo tocados.
             </p>
             <p>
                 Nos sintetizadores analógicos, os amplificadores controlados por tensão 
-                são controlados por fios carregando corrente elétrica, como se é o 
-                esperado, mas para sintetizadores digitais, esses amplificadores 
-                normalmente não são tão aparentes e não possuem muita necessidade de 
-                saber onde eles se encontram ou como são controlados, mas ainda é 
-                importante saber como eles funcionam.
+                são comandados através de cabos que levam um sinal de tensão/corrente elétrica.
+                Para sintetizadores digitais, os amplificadores controlados por tensão podem não ser tão aparentes,
+                mas ainda é importante saber como funcionam.
             </p>
             <p>
-                Vamos adicionar um amplificador controlado por tensão ao nosso 
-                sintetizador agora. Isso significa adicionar um novo módulo e alguns 
-                cabos extras, mas não se preocupe, eles serão explicados após o 
-                diagrama.
+                Com a inclusão de um VCA ao nosso 
+                sintetizador, o diagrama fica como mostrado a seguir.
             </p>
-            <img class="diagrama" src="IMG/diagrama02.png" alt="">
+            <img class="diagrama" src="IMG/diagrama02.png" alt="Sintetizador com VCA">
             <p>
                 O cabo “porta” indo do teclado ao amplificador controlado por tensão é 
-                um sinal que manda uma de duas mensagens ao VCA: “Ligado” se uma tecla 
-                for pressionada e “Desligado” caso contrário. Quando o sinal da porta 
-                está como desligado, ou fechado, não escutamos nada, quando está como 
-                ligado, ou aberto, então o amplificador controlado por tensão 
+                um sinal que manda uma de duas mensagens ao VCA: “ligado” se uma tecla 
+                for pressionada ou “desligado” caso contrário. Quando o sinal da porta 
+                está como desligado, não escutamos nada; quando está como 
+                ligado, então o amplificador controlado por tensão 
                 transportará o áudio do oscilador para a saída de áudio. O cabo 
                 “velocidade” manda um sinal para o amplificador controlado por tensão 
                 correspondente ao quão forte, e consequentemente o quão rápido, tocamos 
-                em uma tecla, apertando uma tecla com rapidez fará com que o áudio da 
-                saída saia mais alto do que se pressionarmos com delicadeza as teclas.
+                em uma tecla. Apertando uma tecla com rapidez, fará com que o áudio da 
+                saída seja mais alto do que se pressionarmos com delicadeza as teclas.
             </p>
             <img class="blocomodulator" src="IMG/blocomodulador02.png" alt="">
-            <p>Nesta imagem no modulator, foi utilizado o exemplo anterior com o 
-                oscilador usando o bloco “gain” para controlar o volume, você pode 
-                checar o preset aqui.
-                No exemplo do modulator utilizado, o bloco “gain” faz o trabalho do 
-                amplificador, qualquer ganho maior que 1 irá aumentar o volume, 
-                enquanto qualquer ganho abaixo de 1 irá atenuar o volume.
+            <p>No Modulator, incluímos o bloco <i>Gain</i> para controlar o volume. 
+                Ele faz o trabalho do amplificador, qualquer ganho maior que 1 irá aumentar o volume, 
+                enquanto um ganho abaixo de 1 irá atenuá-lo. Note que no Modulator não há as
+                entradas porta e velocidade, ou seja, é uma representação simplificada.
             </p>
         </div>
     </div>

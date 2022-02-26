@@ -10,66 +10,83 @@
 <body onload="numPages()">
     <header>
         <a href="index.html">Sintetizador</a>
-        <a id="sobre" href="sobre.html">Sobre</a>
+        <a id="sobre" href="sobre.html">Sobre/About</a>
     </header>
     <div id="principal">
         <div id="conteudo">
             <h1>Formas de onda básicas</h1>
             <p>
-                Existem 4 diferentes tipos de de formas de onda básicas, como ilustrados aqui.
+                Existem 4 tipos de formas de onda básicas, como ilustrado aqui.
             </p>
             <h2>Senoidal</h2>
             <p>
-                Ondas senoidais são parecidas com com uma onda em um recipiente com água, movendo para cima
+                Ondas senoidais são parecidas com uma onda em um recipiente com água, movendo suavemente para cima
                 e para baixo sem nenhum início ou final abrupto. Sons similares com uma onda senoidal incluem
-                assobios, ar se movendo através  da abertura de uma garrafa vazia, e toque de um diapasão.
+                assobios, ar se movendo através da abertura de uma garrafa vazia e o toque de um diapasão.
+                Ondas senoidais tem uma frequência e amplitude (também um deslocamento de fase, mas podemos ignorar por enquanto).
+                Uma onda senoidal representa um tom puro, com energia em uma única frequência.
             </p>
             
-            <img src="IMG/onda02.png" alt="">
-            <img src="IMG/onda03.png" alt="">
-            <img src="IMG/onda04.png" alt="">
-            
+            <img src="IMG/onda02.png" alt="Onda senoidal de frequência baixa">
+            <img src="IMG/onda03.png" alt="Onda senoidal de frequência alta">
+                       
             <p>
-                Ondas senoidais também podem ser adicionadas entre si para gerarem ondas diferentes,
-                como visto nas imagens acima. Caso ondas senoidais de mesma frequência e amplitude inversa
-                sejam adicionadas, o resultado será nulo.
+                Ondas senoidais também podem ser adicionadas para gerarem ondas diferentes.
+                Se somarmos as duas ondas anteriores, o resultado é o seguinte.
+            </p>
+
+            <img src="IMG/onda04.png" alt="Soma de duas ondas senoidais">
+
+            <p>
+            Existe um caso interessante de soma de ondas senoidais: se tiverem a mesma frequência, 
+            mas amplitude invertida, o resultado será nulo. Essa é a ideia básica para cancelar sons indesejados.
             </p>
             
-            <h2>Dente-de-Serra</h2>
-            <img src="IMG/onda05.png" alt="">
+            <h2>Dente de Serra</h2>
+            <img src="IMG/onda05.png" alt="Onda dente-de-serra">
             <p>
-                Ondas de dente-de-serra possuem um som forte e claro de zumbido. Uma onda Dente-de-Serra
-                pode ser feita adicionando séries de ondas senoidais com diferentes frequências e volumes.
-                A frequência da primeira e mais barulhenta onda senoidal é o que escutamos como a frequência
-                da Dente-de-Serra resultante. Isso é chamado de frequência fundamental. Cada uma das outras
-                ficam progressivamente mais quietas, ondas senoidais que fazem uma Dente-de-Serra são múltiplos
-                integrais da frequência fundamental. Essas frequências são chamadas harmônicas.
+                Ondas dente de serra possuem um som forte e claro de zumbido. Você pode ouvir
+                como são mais estridentes no nosso <a href="sintetizador.html">sintetizador online</a>.
+                Uma onda dente de serra pode ser criada adicionando séries de ondas senoidais com diferentes
+                frequências e amplitudes.
+                A frequência da primeira e mais forte onda senoidal é o que escutamos como a frequência
+                da dente de serra resultante. É a chamada frequência fundamental. Cada uma das outras
+                são progressivamente de menor amplitude, mas sempre com frequências múltiplas
+                integrais da frequência fundamental. Essas frequências são chamadas harmônicas. Observe na figura seguinte.
             </p>
+
+            <img src="IMG/grafico01.png" alt="Fundamental e harmônicas de uma onda dente de serra">
+
             <p>
-                Por exemplo, uma onda dente-de-serra ideal com uma frequência fundamental de 100Hz teria harmônicas
-                em 200Hz, 300Hz, 400Hz e por ai em diante, com cada harmônica mais quieta que a última. Devido ao fato
-                que a onda Dente-de-Serra possui cada integral harmônica da frequência fundamental, ela possui um som
-                rico aos nossos ouvidos. A frequência fundamental define o tom do som, enquanto as harmônicas mudam
-                o timbre do som sem afetar o tom.
+                Por exemplo, uma onda dente-de-serra ideal com uma frequência fundamental de 100 Hz teria harmônicas
+                em 200 Hz, 300 Hz, 400 Hz e assim por diante, com cada harmônica de menor amplitude que a última.
+                Devido ao fato da onda dente de serra possuir várias componentes harmônicas da frequência fundamental,
+                ela possui um som rico aos nossos ouvidos. A frequência fundamental define o tom do som, 
+                enquanto as harmônicas mudam o timbre do som sem afetar o tom.
             </p>
-            <img src="IMG/grafico01.png" alt="">
-            <h2>Quadrangular</h2>
-            <img src="IMG/onda06.png" alt="">
+            
+            <h2>Quadrada</h2>
+            <img src="IMG/onda06.png" alt="Onda quadrada">
             <p>
-                Assim como as ondas dente-de-serra, ondas quadrangulares podem ser geradas usando ondas senoidais
-                com um volume decrescente. Entretanto, a onda quadrangular só possui harmônicas impares.
-                Ondas quadrangulares podem ser encontradas no áudio de jogos antigos da Nintendo, que eram feitos quase
-                que inteiramente de ondas quadrangulares.
+                Assim como as ondas dente de serra, ondas quadradas podem ser geradas usando um conjutno de ondas senoidais
+                com um volume (intensidade, amplitude) decrescente. Entretanto, a diferença em relação à dente de serra
+                é que a onda quadrada só possui harmônicas ímpares. Observe no gráfico acima os "ingredientes" que formam
+                uma onda quadrada.
+
+                <img src="IMG/grafico02.png" alt="Fundamental e harmônicas de uma onda quadrada">
+
+                Ondas quadradas podem ser encontradas no áudio de jogos antigos da Nintendo, que eram feitos quase
+                que inteiramente com ondas quadradas.
             </p>
-            <img src="IMG/grafico02.png" alt="">
+
             <h2>Triangular</h2>
-            <img src="IMG/onda07.png" alt="">
+            <img src="IMG/onda07.png" alt="Onda triangular">
             <p>
-                Ondas triangulares tem um som parecido com algo entre uma onda senoidal e uma onda quadrangular.
-                E assim como as ondas quadrangulares, elas possuem apenas as harmônicas ímpares. Elas se diferem
-                das ondas quadrangulares pois o volume de cada harmônica adicionada diminui mais rapidamente.
+                Ondas triangulares têm um som parecido com algo entre uma onda senoidal e uma onda quadrada.
+                Assim como as ondas quadradas, elas possuem apenas as harmônicas ímpares. Elas se diferem
+                das ondas quadradas pela amplitude de cada harmônica adicionada, que diminui mais rapidamente.
             </p>
-            <img src="IMG/grafico03.png" alt="">
+            <img src="IMG/grafico03.png" alt="Fundamental e harmônicas de uma onda triangular">
         </div>
     </div>
 </body>
